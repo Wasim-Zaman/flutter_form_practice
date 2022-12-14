@@ -43,13 +43,32 @@ class _MyHomeState extends State<MyHome> {
               ),
               TextFormField(
                 decoration: const InputDecoration(labelText: 'Password'),
+                focusNode: _passwordField,
                 textInputAction: TextInputAction.next,
                 onFieldSubmitted: (_) =>
                     FocusScope.of(context).requestFocus(_phoneField),
               ),
               TextFormField(
-                decoration: const InputDecoration(labelText: 'Password'),
+                decoration: const InputDecoration(labelText: 'Phone'),
+                focusNode: _phoneField,
+                keyboardType: TextInputType.number,
                 textInputAction: TextInputAction.done,
+                onFieldSubmitted: (_) =>
+                    ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: ListTile(
+                      leading: CircleAvatar(
+                        child: Icon(
+                          Icons.add,
+                        ),
+                      ),
+                      title: Text(
+                        "Form submitted",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
